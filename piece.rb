@@ -1,12 +1,14 @@
 class Piece
   attr_reader :axes_length, :id, :turnability, :id_string, :order
+  attr_accessor :visibility, :visible_id
 
-  def initialize(id, platonic_solid)
+  def initialize(id, visible_id, platonic_solid, visibility = true)
     @id = id
     @platonic_solid = platonic_solid
     @axes_length = @platonic_solid.axes.length
-
+    @visibility = visibility # binary variable to indicate whether a piece is actually visible or not at the end
     generate_turnability
+    @visible_id = visible_id
   end
 
   def generate_turnability
@@ -21,6 +23,11 @@ class Piece
         @order += 1
       end
     end
+  end
+
+  def determine_visibility
+    @visibility = (@order <= 2 or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1))
+    # @visibility = true # all visible, full complex puzzle
   end
 
   def transform(axis)

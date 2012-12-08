@@ -1,25 +1,50 @@
 class Puzzle
-  attr_reader :platonic_solid, :number_pieces, :pieces, :stickers
+  attr_reader :platonic_solid, :number_pieces, :pieces, :stickers, :number_visible_stickers, :number_visible_pieces
 
   def initialize(shape, axes)
     @platonic_solid = Platonic.new(shape, axes)
-    
+
+    if @platonic_solid.axes.empty?
+      raise "Cannot construct model."
+      exit
+    end
+
     @number_pieces = 2**(@platonic_solid.axes.length)
 
     # populate pieces
+    visible_pieces_so_far = 0
     @pieces = Array.new(@number_pieces) do |id|
-      piece = Piece.new(id, @platonic_solid)
+      piece = Piece.new(id, visible_pieces_so_far, @platonic_solid)
+      piece.determine_visibility
+      if piece.visibility
+        visible_pieces_so_far += 1
+      end
+      piece
     end
 
-    # @pieces.select!{|piece| piece.order<=1}
+    @number_visible_pieces = visible_pieces_so_far
+
+    # @pieces.map do |piece| 
+    #   puts "#{piece.id_string}, #{piece.id}, #{piece.visible_id}"
+    # end
 
     @stickers = []
 
     @pieces.each do |piece|
       @platonic_solid.axes.length.times do |in_piece_id|
-        @stickers << Sticker.new(piece.id, in_piece_id, @platonic_solid)
+        @stickers << Sticker.new(piece.id, piece.visible_id, in_piece_id, @platonic_solid, piece.visibility)
       end
     end
+
+    @number_visible_stickers = @number_visible_pieces * @platonic_solid.axes.length
+
+    # @stickers.map do |sticker| 
+    #   if sticker.visibility
+    #     puts "Sticker # #{sticker.id}, visible_id: #{sticker.visible_id}"
+    #   end
+    # end    
+
+
   end
 
   def transform_sticker(axis)
@@ -27,7 +52,13 @@ class Puzzle
   end
 
   def transform_sticker_plus_one(axis)
-    transform_sticker(axis).map{|x| x+1}
+    output = []
+    @stickers.each do |sticker|
+      if @stickers[sticker.transform(axis, @pieces)].visibility
+        output << (@stickers[sticker.transform(axis, @pieces)].visible_id + 1 )
+      end
+    end # visible id
+    return output
   end
 
   def transform_piece(axis)
@@ -37,7 +68,13 @@ class Puzzle
   end
 
   def transform_piece_plus_one(axis)
-    @pieces.map {|piece| piece.transform(axis) + 1 }
+    output = []
+    @pieces.each do |piece|
+      if @pieces[piece.transform(axis)].visibility
+        output << @pieces[piece.transform(axis)].visible_id + 1 
+      end
+    end # visible id
+    return output
   end
 
 end

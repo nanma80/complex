@@ -3,6 +3,7 @@ class Point3d
 
   def initialize(vector)
     norm_sq = 0
+    
     vector.each do |component|
       norm_sq += component * component
     end

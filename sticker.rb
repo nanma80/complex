@@ -2,12 +2,18 @@ require_relative 'platonic'
 
 class Sticker
   attr_reader :id, :piece_id, :in_piece_id
-  def initialize(piece_id, in_piece_id, platonic_solid)
+  attr_accessor :visibility, :visible_id
+
+  def initialize(piece_id, visible_piece_id, in_piece_id, platonic_solid, visibility=true)
     @piece_id = piece_id
+    @visible_piece_id = visible_piece_id
     @in_piece_id = in_piece_id
     @platonic_solid = platonic_solid
 
     @id = @piece_id * @platonic_solid.axes.length + @in_piece_id
+    
+    @visibility = visibility
+    @visible_id = @visible_piece_id * @platonic_solid.axes.length + @in_piece_id
 
   end
 

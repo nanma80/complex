@@ -1,3 +1,0 @@
-Read("C:/Users/Nan/Software/ruby/complex/complex.g");
-
-Read("/Users/nma/Documents/Rubik/complex/complex.g");
