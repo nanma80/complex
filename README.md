@@ -1,7 +1,13 @@
 Computing the number of permutations of the complex puzzles
 -------
 
-The class of complex puzzles were proposed and discussed on the Twistypuzzles.com forum. The main contributers are Carl Hoff (wwwmwww), Andreas Nortmann, Matt Galla (Allagem). In this post:
+The class of complex puzzles were proposed and discussed on the Twistypuzzles.com forum.
+
+http://twistypuzzles.com/forum/viewtopic.php?p=191376
+
+The main contributers are Carl Hoff (wwwmwww), Andreas Nortmann, Matt Galla (Allagem). 
+
+In this post:
 
 http://twistypuzzles.com/forum/viewtopic.php?f=1&t=18470
 
