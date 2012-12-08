@@ -26,8 +26,9 @@ class Piece
   end
 
   def determine_visibility
-    @visibility = (@order <= 2 or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1))
-    # @visibility = true # all visible, full complex puzzle
+    # @visibility = (@order <= 2 or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1)) # super stickered 3x3x3
+    # @visibility = (@order==0 or  [ 4, 35, 6, 34, 11, 7, 18, 49, 41, 13, 21, 25 ].include? (@id+1) or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1)) # 3x3x3
+    @visibility = true # all visible, full complex puzzle
   end
 
   def transform(axis)

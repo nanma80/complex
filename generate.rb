@@ -37,13 +37,11 @@ until ARGV.empty? do
     end
 end
 
-puts 'Analyzing complex '+axes+'-turning '+shape
+puts 'Analyzing the complex '+axes+'-turning '+shape
 
 # create puzzle
 
 puzzle = Puzzle.new(shape, axes)
-
-puzzle.platonic_solid.print_table
 
 if false
   axis = 0
@@ -73,7 +71,7 @@ command << 'Print("Complex '+axes+'-turning '+shape+':\n");'
 command << "\n"
 
 command << "pieces := Group([" + pieces_permlists * "," +"]);\nsize_pieces:=Size(pieces);\n"
-command << 'Print("Order of pieces: \n",size_pieces,"\n");'
+command << 'Print("Number of permutations of pieces (ignoring orientation): \n",size_pieces,"\n");'
 command << "\n"
 command << 'Print("Orbits of pieces: \n",Orbits(pieces,[1..'+ puzzle.number_visible_pieces.to_s + ']),"\n");'
 command << "\n"
@@ -81,7 +79,7 @@ command << "\n"
 if !piece_only
   command << "stickers := Group([" + stickers_permlists * "," +"]);\nsize_stickers:=Size(stickers);\n"
 
-  command << 'Print("Order of stickers: \n",size_stickers,"\n");'
+  command << 'Print("Number of permutations of stickers (considering orientation): \n",size_stickers,"\n");'
   command << "\n"
   command << 'Print("Orbits of stickers: \n",Orbits(stickers,[1..'+ puzzle.number_visible_stickers.to_s + ']),"\n");'
   command << "\n"

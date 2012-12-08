@@ -15,14 +15,14 @@ class Platonic
 
     import_axes(shape, axes)
 
-    puts "Axes are in these directions:"
-    puts @axes
+    # puts "Axes are in these directions:"
+    # puts @axes
 
     generate_multiplication_table
 
     # table[rotated][rotating] = index of destination
-    puts "\nMultiplication table:"
-    print_table
+    # puts "\nMultiplication table:"
+    # print_table
 
   end
 

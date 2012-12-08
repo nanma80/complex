@@ -24,10 +24,6 @@ class Puzzle
 
     @number_visible_pieces = visible_pieces_so_far
 
-    # @pieces.map do |piece| 
-    #   puts "#{piece.id_string}, #{piece.id}, #{piece.visible_id}"
-    # end
-
     @stickers = []
 
     @pieces.each do |piece|
@@ -37,13 +33,6 @@ class Puzzle
     end
 
     @number_visible_stickers = @number_visible_pieces * @platonic_solid.axes.length
-
-    # @stickers.map do |sticker| 
-    #   if sticker.visibility
-    #     puts "Sticker # #{sticker.id}, visible_id: #{sticker.visible_id}"
-    #   end
-    # end    
-
 
   end
 
@@ -57,13 +46,11 @@ class Puzzle
       if @stickers[sticker.transform(axis, @pieces)].visibility
         output << (@stickers[sticker.transform(axis, @pieces)].visible_id + 1 )
       end
-    end # visible id
+    end
     return output
   end
 
   def transform_piece(axis)
-    # @pieces.map {|piece| "#{piece.id} --> #{piece.transform(axis)}" }
-    # @pieces.map {|piece| "#{piece.id_string} --> #{@pieces[piece.transform(axis)].id_string}" }
     @pieces.map {|piece| piece.transform(axis) }
   end
 
@@ -73,7 +60,7 @@ class Puzzle
       if @pieces[piece.transform(axis)].visibility
         output << @pieces[piece.transform(axis)].visible_id + 1 
       end
-    end # visible id
+    end
     return output
   end
 
