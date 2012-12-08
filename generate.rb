@@ -1,8 +1,8 @@
-require_relative 'point_3d'
-require_relative 'platonic'
-require_relative 'sticker'
-require_relative 'puzzle'
-require_relative 'piece'
+require_relative 'lib\point_3d'
+require_relative 'lib\platonic'
+require_relative 'lib\sticker'
+require_relative 'lib\puzzle'
+require_relative 'lib\piece'
 
 # parsing input
 
