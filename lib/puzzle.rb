@@ -64,4 +64,14 @@ class Puzzle
     return output
   end
 
+  def reorient_piece_plus_one(axis)
+    output = []
+    @pieces.each do |piece|
+      if @pieces[piece.reorient(axis)].visibility
+        output << @pieces[piece.reorient(axis)].visible_id + 1 
+      end
+    end
+    return output
+  end
+
 end

@@ -26,9 +26,41 @@ class Piece
   end
 
   def determine_visibility
-    # @visibility = (@order <= 2 or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1)) # super stickered 3x3x3
-    # @visibility = (@order==0 or  [ 4, 35, 6, 34, 11, 7, 18, 49, 41, 13, 21, 25 ].include? (@id+1) or [ 8, 15, 36, 22, 43, 29, 50, 57].include? (@id+1)) # 3x3x3
-    @visibility = true # all visible, full complex puzzle
+
+    cube_types = [ [ 1 ], # 0, core
+    [ 2, 17, 5, 3, 33, 9 ], # 1, face
+    [ 4, 18, 7, 34, 11, 35, 6, 25, 21, 49, 13, 41 ], # 2, edge
+    [ 8, 22, 15, 36, 29, 50, 43, 57 ], # 3, corner
+    [ 10, 19, 37 ], # 4, UD
+    [ 12, 20, 39, 42, 27, 14, 26, 23, 38, 51, 45, 53 ], # 5 UDF
+    [ 16, 24, 47, 44, 31, 40, 30, 52, 54, 59, 61, 58 ], # 6 inverted edge
+    [ 28, 55, 46 ], # 7 FBLR
+    [ 32, 63, 48, 56, 62, 60 ], # 8 inverted face
+    [ 64 ] ] # 9, inverted core
+
+    # white list
+    white_list = []
+
+    # white_list |= cube_types[1]
+    # white_list |= cube_types[2]
+    # white_list |= cube_types[3]
+
+    # black list
+    black_list = []
+
+    # black_list |= cube_types[0]
+    # black_list |= cube_types[4]
+    # black_list |= cube_types[7]
+    # black_list |= cube_types[9]
+
+
+    if !(white_list.empty?)
+      @visibility = (white_list.include? (@id+1))
+    else # white list is empty, look at black list
+      @visibility = !(black_list.include? (@id+1))
+    end
+
+    
   end
 
   def transform(axis)
@@ -38,6 +70,19 @@ class Piece
     if !@turnability[axis]
       return @id
     end
+
+    @axes_length.times do |from_index|
+      to_index = @platonic_solid.table[from_index][axis]
+      new_id_string[to_index] = @id_string[from_index]
+    end
+    
+    return new_id_string.to_i(2)
+  end
+
+  def reorient(axis)
+    # just like transform, but it's for global reorientation
+    # return id of destination piece
+    new_id_string = @id_string[0..-1]
 
     @axes_length.times do |from_index|
       to_index = @platonic_solid.table[from_index][axis]

@@ -22,11 +22,11 @@ until ARGV.empty? do
       shape = 'dodecahedron'
     elsif ['icosahedron', 'icosahedra','icosa','icos'].include? arg
       shape = 'icosahedron'
-    elsif ['face','face-turning'].include? arg
+    elsif ['face','face-turning','f'].include? arg
       axes = 'face'
-    elsif ['vertex','vertex-turning','corner','corner-turning','vertices','corners'].include? arg
+    elsif ['vertex','vertex-turning','corner','corner-turning','vertices','corners','v','c'].include? arg
       axes = 'vertex'
-    elsif ['edge','edge-turning','edges'].include? arg
+    elsif ['edge','edge-turning','edges','e'].include? arg
       axes = 'edge'
     elsif ['turning'].include? arg
       # ignore
@@ -49,6 +49,8 @@ if false
   exit
 end
 
+reorient_permlists = []
+
 pieces_permlists = []
 
 stickers_permlists = []
@@ -56,7 +58,10 @@ stickers_permlists = []
 
 puzzle.platonic_solid.axes.length.times do |axis|
 
+  reorient_permlists << "PermList(["+puzzle.reorient_piece_plus_one(axis) * ","+"])"
+
   pieces_permlists << "PermList(["+puzzle.transform_piece_plus_one(axis) * ","+"])"
+
   if !piece_only
     stickers_permlists << "PermList(["+puzzle.transform_sticker_plus_one(axis) * ","+"])"
   end
@@ -70,9 +75,15 @@ command = ""
 command << 'Print("Complex '+axes+'-turning '+shape+':\n");'
 command << "\n"
 
+command << "reorient := Group([" + reorient_permlists * "," +"]);\ntypes:=Orbits(reorient,[1.."+ puzzle.number_visible_pieces.to_s + "]);\n"
+command << 'Print("There are ",Length(types), " types of pieces: \n",types,"\n");'
+command << "\n"
+
+
 command << "pieces := Group([" + pieces_permlists * "," +"]);\nsize_pieces:=Size(pieces);\n"
 command << 'Print("Number of permutations of pieces (ignoring orientation): \n",size_pieces,"\n");'
 command << "\n"
+# print orbits of pieces
 command << 'Print("Orbits of pieces: \n",Orbits(pieces,[1..'+ puzzle.number_visible_pieces.to_s + ']),"\n");'
 command << "\n"
 
@@ -81,6 +92,7 @@ if !piece_only
 
   command << 'Print("Number of permutations of stickers (considering orientation): \n",size_stickers,"\n");'
   command << "\n"
+  # print orbits of stickers
   command << 'Print("Orbits of stickers: \n",Orbits(stickers,[1..'+ puzzle.number_visible_stickers.to_s + ']),"\n");'
   command << "\n"
 end
