@@ -65,6 +65,7 @@ Sanity check
 For Complex face-turning tetrahedra (which is essentialy Jing's pyraminx), the number matches my manual analysis
 For Complex 3x3x3, the number matches Andreas Nortmann's result in the forum.
 When setting only the common pieces on 3x3x3 (with or without super stickers) to be visible, the numbers matches the known results.
+
 ------------
 Checkout results.txt for some results and analysis.
 
