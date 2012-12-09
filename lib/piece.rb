@@ -52,7 +52,7 @@ class Piece
       [ 16, 52, 171, 86, 205, 241 ], # 8, [UFR, UFL, UBR, UBL] FTO corners
       [ 23, 135, 149, 147 ], # 9, [UFL, UBR, DFR], circle Skewb corner around [UFR] but not moved by [UFR] itself, orbit 1/2
       [ 24, 143, 213, 179 ], # 10, [UFR, UFL, UBR, DFR], Skewb corner, orbit 1/2
-      [ 25, 37, 130, 67 ], # 11, [UFR, DLB], opposite corners just like [UD] of complex 3x3x3,   ----- redundant
+      [ 25, 37, 130, 67 ], # 11, [UFR, DLB], opposite corners just like [UD] of complex 3x3x3,   REDUNDANT, verified
       [ 26, 38, 45, 194, 89, 57, 75, 162, 68, 138, 101, 99 ], # 12, [UFR, UFL, DBR], orbit 1/2
       [ 27, 53, 39, 146, 29, 153, 195, 132, 71, 134, 165, 83 ], # 13, [UFR, UFL, DBR], orbit 2/2
       [ 28, 54, 47, 210, 93, 185, 203, 164, 72, 142, 229, 115 ], # 14, [UBR, UFR, UFL, DFL], zigzag, orbit 1/2
