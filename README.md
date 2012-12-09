@@ -16,7 +16,9 @@ Andreas Nortmann computed the number of permutations of the Complex 3x3x3 using 
 The goal of this project is to investigate more Complex puzzles, including vertex-turning cube, edge-turning tetrahedron, or face-turning dodecahedron, etc.
 
 My method is 
+
 (1) to use Ruby code to generate a text file specifying the permutations of pieces or stickers and hence specify the group;
+
 (2) to import the above text file into GAP, and compute the number of permutations and orbits.
 
 
@@ -35,10 +37,12 @@ http://www.gap-system.org/
 
 - Then run:
 
-ruby generate.rb <shape> <turning_axes> [piece-only]
+ruby generate.rb shape turning_axes [piece-only]
 
-where <shape> may be tetrahedron, cube, octahedron, dodecahedron or icosahedron
-<turning_axes> may be face, vertex, or edge
+where shape may be tetrahedron, cube, octahedron, dodecahedron or icosahedron
+
+turning_axes may be face, vertex, or edge
+
 [piece-only] is an optional switch. If not given, the code will generate the permutation for both pieces and stickers. If given, it will only generate that for pieces.
 
 Examples:
@@ -65,14 +69,20 @@ Sanity check
 For Complex face-turning tetrahedra (which is essentialy Jing's pyraminx), the number matches my manual analysis
 For Complex 3x3x3, the number matches Andreas Nortmann's result in the forum.
 When setting only the common pieces on 3x3x3 (with or without super stickers) to be visible, the numbers matches the known results.
+
 ------------
 Checkout results.txt for some results and analysis.
 
 Result highlight
 ---------
 On the complex vertex-turning cube (or face-turning octahedron), the only redundant piece types are the counterpart of those on the complex 3x3x3: 
-(1) core
-(2) four pieces moved by antipodal corners, e.g., [UFR,DBL]
-(3) inverted antipodal pieces
-(4) inverted core.
+
+- core
+
+- four pieces moved by antipodal corners, e.g., [ UFR, DBL ]
+
+- inverted antipodal pieces
+
+- inverted core.
+
 After removing these pieces, removing any other piece type will cause a reduction of the number of permutations.
