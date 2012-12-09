@@ -41,43 +41,43 @@ class Piece
     ] # 9, inverted core
 
     cube_v_types = [\
-      [ 1 ], # 0, [] core
-      [ 2, 9, 65, 33 ], # 1, [UFR], never move orbit 1/2
-      [ 3, 17, 5, 129 ], # 2, [UFR], never move orbit 2/2
+      [ 1 ], # 0, [] core, REDUNDANT, verified
+      [ 2, 9, 65, 33 ], # 1, [UFR], cube corner or FTO face, never move orbit 1/2,
+      [ 3, 17, 5, 129 ], # 2, [UFR], cube corner or FTO face, never move orbit 2/2
       [ 4, 18, 11, 81, 69, 161, 137, 35, 6, 13, 193, 49 ], # 3, [UFR,UFL] edges in Dino cube or FTO
       [ 7, 19, 131, 21, 133, 145 ], # 4, [UFR, ULB], "weird FTO corner", orbit 1/2
-      [ 8, 20, 139, 85, 197, 163, 141, 51, 22, 15, 209, 177 ], # 5, [UFR,UFL,DFR], FTO triangles, orbit 1/2
+      [ 8, 20, 139, 85, 197, 163, 141, 51, 22, 15, 209, 177 ], # 5, [UFR,UFL,DFR], FTO triangles, orbit 1/2, mirror of #7
       [ 10, 34, 41, 66, 73, 97 ], # 6, [UFR, ULB], "weird FTO corner", orbit 1/2
-      [ 12, 50, 43, 82, 77, 169, 201, 36, 70, 14, 225, 113 ], # 7, [UFR,UFL,DFR], FTO triangles, orbit 2/2
+      [ 12, 50, 43, 82, 77, 169, 201, 36, 70, 14, 225, 113 ], # 7, [UFR,UFL,DFR], FTO triangles, orbit 2/2, mirror of #5
       [ 16, 52, 171, 86, 205, 241 ], # 8, [UFR, UFL, UBR, UBL] FTO corners
-      [ 23, 135, 149, 147 ], # 9, [UFL, UBR, DFR], circle Skewb corner around [UFR] but not moved by [UFR] itself, orbit 1/2
-      [ 24, 143, 213, 179 ], # 10, [UFR, UFL, UBR, DFR], Skewb corner, orbit 1/2
+      [ 23, 135, 149, 147 ], # 9, [UFL, UBR, DFR], circle Skewb corner around [UFR] but not moved by [UFR] itself, orbit 1/2, mirror of #18
+      [ 24, 143, 213, 179 ], # 10, [UFR, UFL, UBR, DFR], Skewb corner, orbit 1/2 mirror of #19,
       [ 25, 37, 130, 67 ], # 11, [UFR, DLB], opposite corners just like [UD] of complex 3x3x3,   REDUNDANT, verified
       [ 26, 38, 45, 194, 89, 57, 75, 162, 68, 138, 101, 99 ], # 12, [UFR, UFL, DBR], orbit 1/2
       [ 27, 53, 39, 146, 29, 153, 195, 132, 71, 134, 165, 83 ], # 13, [UFR, UFL, DBR], orbit 2/2
       [ 28, 54, 47, 210, 93, 185, 203, 164, 72, 142, 229, 115 ], # 14, [UBR, UFR, UFL, DFL], zigzag, orbit 1/2
       [ 30, 40, 173, 198, 217, 59, 79, 178, 84, 140, 117, 227 ], # 15, [UBR, UFR, UFL, DFL], zigzag, orbit 2/2
-      [ 31, 55, 167, 150, 157, 155, 199, 148, 87, 136, 181, 211 ], #16, 
-      [ 32, 56, 175, 214, 221, 187, 207, 180, 88, 144, 245, 243 ], 
-      [ 42, 98, 74, 105 ], 
-      [ 44, 114, 78, 233 ],
-      [ 46, 100, 170, 102, 202, 107, 109, 58, 90, 76, 121, 226 ],
-      [ 48, 116, 172, 118, 206, 235, 237, 60, 94, 80, 249, 242 ], 
-      [ 61, 103, 166, 154, 91, 196 ],
-      [ 62, 104, 174, 230, 218, 123, 111, 186, 92, 204, 125, 228 ],
-      [ 63, 119, 168, 182, 158, 219, 231, 156, 95, 200, 189, 212 ],
-      [ 64, 120, 176, 246, 222, 251, 239, 188, 96, 208, 253, 244 ], 
-      [ 106 ], 
-      [ 108, 122, 110, 234 ],
-      [ 112, 124, 236, 126, 238, 250 ], 
-      [ 127, 232, 190, 220 ], 
-      [ 128, 240, 254, 252 ], 
-      [ 151 ], 
-      [ 152, 159, 215, 183 ],
-      [ 160, 184, 191, 216, 223, 247 ], 
-      [ 192, 248, 224, 255 ], 
-      [ 256 ] \
-    ]
+      [ 31, 55, 167, 150, 157, 155, 199, 148, 87, 136, 181, 211 ], # 16, [UFR, UFL, UBR, DBL], orbit 1/2, mirror of #20
+      [ 32, 56, 175, 214, 221, 187, 207, 180, 88, 144, 245, 243 ], # 17, inverted [UFR,UFL,DFR], inverted FTO triangles, orbit 1/2, mirror of #21
+      [ 42, 98, 74, 105 ], # 18, [UFL, UBR, DFR], circle Skewb corner around [UFR] but not moved by [UFR] itself, orbit 2/2, mirror of #9
+      [ 44, 114, 78, 233 ],# 19, [UFR, UFL, UBR, DFR], Skewb corner, orbit 2/2, mirror of #10
+      [ 46, 100, 170, 102, 202, 107, 109, 58, 90, 76, 121, 226 ], # 20, [UFR, UFL, UBR, DBL], orbit 2/2, mirror of #16
+      [ 48, 116, 172, 118, 206, 235, 237, 60, 94, 80, 249, 242 ], # 21, inverted [UFR,UFL,DFR], inverted FTO triangles, orbit 2/2, mirror of #17
+      [ 61, 103, 166, 154, 91, 196 ], # 22, [UFR, DFR, UBL, DBL], self inverted
+      [ 62, 104, 174, 230, 218, 123, 111, 186, 92, 204, 125, 228 ], # 23, inverted [UFR, UFL, DBR], orbit 1/2
+      [ 63, 119, 168, 182, 158, 219, 231, 156, 95, 200, 189, 212 ], # 24, inverted [UFR, UFL, DBR], orbit 2/2
+      [ 64, 120, 176, 246, 222, 251, 239, 188, 96, 208, 253, 244 ], # 25, inverted [UFR,UFL], inverted edges in Dino cube or FTO
+      [ 106 ], # 26, [UFR, UBL, DFL, DBR], alternating corner, orbit 1/2, necessary
+      [ 108, 122, 110, 234 ], #27, inverted [UFL, UBR, DFR], inverted circle Skewb corner, orbit 1/2, mirror of #32
+      [ 112, 124, 236, 126, 238, 250 ], # 28, inverted [UFR, ULB], inverted "weird FTO corner", orbit 1/2, mirror of #33
+      [ 127, 232, 190, 220 ], # 29, inverted [UFR, DLB], opposite corners, REDUNDANT
+      [ 128, 240, 254, 252 ], # 30, inverted [UFR], orbit 1/2
+      [ 151 ], # 31, [UFR, UBL, DFL, DBR], alternating corner, orbit 2/2, necessary
+      [ 152, 159, 215, 183 ], # 32, inverted [UFL, UBR, DFR], inverted circle Skewb corner, orbit 2/2, mirror of #27
+      [ 160, 184, 191, 216, 223, 247 ], # 33, inverted [UFR, ULB], inverted "weird FTO corner", orbit 2/2, mirror #28
+      [ 192, 248, 224, 255 ], # 34, inverted [UFR], orbit 2/2
+      [ 256 ]] # 35, inverted core, REDUNDANT
+    
 
 
     # white list
@@ -87,7 +87,11 @@ class Piece
     # black list
     black_list = []
 
-    black_list |= cube_v_types[11]
+    # black_list |= cube_v_types[0]
+    # black_list |= cube_v_types[11]
+    # black_list |= cube_v_types[29]
+    # black_list |= cube_v_types[35]
+    
 
     if !(white_list.empty?)
       @visibility = (white_list.include? (@id+1))

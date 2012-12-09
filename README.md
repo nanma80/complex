@@ -20,6 +20,7 @@ My method is
 (2) to import the above text file into GAP, and compute the number of permutations and orbits.
 
 
+
 Usage:
 -------
 - Install Ruby:
@@ -66,3 +67,12 @@ For Complex 3x3x3, the number matches Andreas Nortmann's result in the forum.
 When setting only the common pieces on 3x3x3 (with or without super stickers) to be visible, the numbers matches the known results.
 ------------
 Checkout results.txt for some results and analysis.
+
+Result highlight
+---------
+On the complex vertex-turning cube (or face-turning octahedron), the only redundant piece types are the counterpart of those on the complex 3x3x3: 
+(1) core
+(2) four pieces moved by antipodal corners, e.g., [UFR,DBL]
+(3) inverted antipodal pieces
+(4) inverted core.
+After removing these pieces, removing any other piece type will cause a reduction of the number of permutations.
