@@ -335,6 +335,36 @@ Orbits of stickers:
   [ 1531, 1978, 1979, 1792, 2034, 2035, 1533, 1789, 1786, 2037, 1536, 1984 ],
   [ 1535, 1980, 1790, 2033 ], [ 2041, 2044, 2047, 2046 ], [ 2042, 2045, 2043, 2048 ] ]
 
+Further manual analysis:
+
+Piece types:
+
+1. core, REDUNDANT, 1 piece
+2. [UFR], cube corner or FTO face, never move, only rotate. 2 chiral orbits. 8 pieces
+3. [UFR,UFL] edges in Dino cube or FTO. 12 pieces
+4. [UFR, ULB], "weird FTO corner", 2 orbits, 12 pieces
+5. [UFR,UFL,DFR], FTO triangles, 2 orbits, 24 pieces
+6. [UFR, UFL, UBR, UBL] FTO corners, 6 pieces
+7. [UFL, UBR, DFR], circle Skewb corner, around [UFR] but not moved by [UFR] itself, 2 orbits, 8 pieces
+8. [UFR, UFL, UBR, DFR], Skewb corner, 2 orbits, self-inverted, 8 pieces
+9. [UFR, DLB], antipodal corners. just like [UD] of complex 3x3x3, REDUNDANT, 4 pieces
+10. [UFR, UFL, DBR], 2 orbits, 24 pieces
+11. [UBR, UFR, UFL, DFL], zigzag, 2 orbits, 24 pieces
+12. [UFR, UFL, UBR, DBL], 2 orbits, 24 pieces
+13. inverted [UFR,UFL,DFR], inverted FTO triangles, 2 orbits, 24 pieces
+14. [UFR, DFR, UBL, DBL], two opposite edges. self inverted, 6 pieces
+15. inverted [UFR, UFL, DBR], 2 orbits, 24 pieces
+16. inverted [UFR,UFL], inverted edges in Dino cube or FTO. 12 pieces
+17. [UFR, UBL, DFL, DBR], alternating corners. 2 orbits, 2 pieces in total
+18. inverted [UFL, UBR, DFR], circle Skewb corner, 2 orbits, 8 pieces
+19. inverted [UFR, ULB], inverted "weird FTO corner", 2 orbits, 12 pieces
+20. inverted [UFR, DLB], inverted antipodal corners, REDUNDANT, 4 pieces
+21. inverted [UFR], inverted face, 2 orbits, 8 pieces
+22. inverted core, REDUNDANT, 1 piece
+
+
+
+
 ----------
 Complex edge-turning cube:
 

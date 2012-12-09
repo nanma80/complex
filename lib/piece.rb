@@ -3,15 +3,21 @@ class Piece
   attr_accessor :visibility, :visible_id
 
   def initialize(id, visible_id, platonic_solid, visibility = true)
-    @id = id
+    @id = id # id of piece. An integer between 0 and 2^(number of axes) - 1
     @platonic_solid = platonic_solid
-    @axes_length = @platonic_solid.axes.length
+    @axes_length = @platonic_solid.axes.length # number of axes, or, the length of the axes array
     @visibility = visibility # binary variable to indicate whether a piece is actually visible or not at the end
     generate_turnability
-    @visible_id = visible_id
+    @visible_id = visible_id # Some pieces are visible and some not. visible_id is the count of only visible pieces, skipping all the invisible ones.
   end
 
   def generate_turnability
+    # turnability is an array of boolean variables, indicating whether this piece is movable by which axes
+    # Example: in a face turning cube, the FR edge's turnability array is:
+    # [true, false, true, false, false, false]
+    # the 0th axis is FRONT, and the 2nd axis is UP. The FR edge are turnable by these two axes.
+    # method: convert the id (integer) into a string like "101000", then translate "1"-> true, "0"->false
+
     @id_string = (@id + 2**@axes_length).to_s(2)[1..-1]
     @turnability = Array.new(@axes_length) do |index|
       @id_string[index] == "1"
@@ -26,6 +32,9 @@ class Piece
   end
 
   def determine_visibility
+    # determine whether a piece is visible based on its id. The arrays cube_f_types and cube_v_types are copied from the output of GAP.
+    # set a white list and black list that may include some of the piece types, and determine @visibility
+    # this part is partly manual
 
     cube_f_types = [ \
       [ 1 ], # 0, core
@@ -83,6 +92,9 @@ class Piece
     # white list
     white_list = []
 
+    white_list |= cube_f_types[0]
+    white_list |= cube_f_types[2]
+    white_list |= cube_f_types[3]
 
     # black list
     black_list = []
@@ -92,7 +104,6 @@ class Piece
     # black_list |= cube_v_types[29]
     # black_list |= cube_v_types[35]
     
-
     if !(white_list.empty?)
       @visibility = (white_list.include? (@id+1))
     else # white list is empty, look at black list
@@ -103,31 +114,30 @@ class Piece
   end
 
   def transform(axis)
-    # return id of destination piece
-    new_id_string = @id_string[0..-1]
-
+    # return id of destination piece, if the current piece (self) is twisted by the axis
     if !@turnability[axis]
+      # if this piece is not turnable by axis, it doesn't move
       return @id
     end
 
-    @axes_length.times do |from_index|
-      to_index = @platonic_solid.table[from_index][axis]
-      new_id_string[to_index] = @id_string[from_index]
-    end
-    
-    return new_id_string.to_i(2)
+    # when it will be moved by axis, find the destination
+    reorient axis
   end
 
   def reorient(axis)
-    # just like transform, but it's for global reorientation
-    # return id of destination piece
+    # assuming this piece is moved by axis, find the id of destination piece
+    # this method is called reorient, because when reorient the puzzle, all the pieces needs to call this method
+    
+    # duplicate id_string
     new_id_string = @id_string[0..-1]
 
     @axes_length.times do |from_index|
+      # change the new_id_string based on the multiplication table of the platonic solid
       to_index = @platonic_solid.table[from_index][axis]
       new_id_string[to_index] = @id_string[from_index]
     end
     
+    # convert new_id_string into integer-valued id
     return new_id_string.to_i(2)
   end
 

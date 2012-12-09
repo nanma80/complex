@@ -2,6 +2,8 @@ class Point3d
   attr_accessor :coord, :norm
 
   def initialize(vector)
+    # Construct a vector and normalize it so that the length == 1
+    # unless the input vector is zero, in which case it cannot be normalized, so it stays zero.
     norm_sq = 0
     
     vector.each do |component|
@@ -10,7 +12,6 @@ class Point3d
     
     if norm_sq > 0
       @norm = Math.sqrt(norm_sq)
-
       @coord = vector.map{|x| x/norm}
     else
       @norm = 0
@@ -25,6 +26,7 @@ class Point3d
 
   def rotate(axis, t) 
     # rotating self around axis by t radian
+    # norm of axis should be 1
 
     raise "Norm of axis cannot be zero" if axis.norm == 0
     
