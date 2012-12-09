@@ -21,7 +21,6 @@ reorient_permlists = []
 pieces_permlists = []
 stickers_permlists = []
 
-
 puzzle.platonic_solid.axes.length.times do |axis|
 
   reorient_permlists << "PermList(["+puzzle.reorient_piece_plus_one(axis) * ","+"])"

@@ -381,8 +381,7 @@ Ruby can generate permutation for both pieces and stickers.
 ----------
 Complex vertex-turning dodecahedron:
 
-Ruby can form multiplication table, but cannot go further in a few minutes. The program needs to deal with 2^20 = one million objects.
-
+Ruby can construct reorientation table, but cannot go further in a few minutes. The program needs to deal with 2^20 = one million objects.
 
 ----------
 Complex edge-turning dodecahedron:

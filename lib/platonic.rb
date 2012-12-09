@@ -17,12 +17,12 @@ class Platonic
 
     import_order(shape, turning_axes)
 
-    generate_multiplication_table
+    generate_reorientation_table
 
   end
 
   def print_table
-    # print the multiplication table
+    # print the reorientation table
     @table.each do |row|
       row.each do |element|
         print element.to_s + ", "
@@ -31,7 +31,7 @@ class Platonic
     end
   end
 
-  def generate_multiplication_table
+  def generate_reorientation_table
     # construct a table, to = @table[from][axis]. It describes where does a point "from" go when the platonic solid is rotated around axis CCW
     # Example, on face-turning cube, 0 means FRONT, 1 means RIGHT, 2 means UP. Since FRONT goes to RIGHT when the solid is rotated around UP, CCW by 90 deg, @table[0][2]==1 is true
     # method to construct it is to start with the "from" vector, do a 3D rotation, get a "to" vector. Ideally the "to" vector should be identical to one of the axes. Because of precision issue, I look for the closest axis.
@@ -41,9 +41,9 @@ class Platonic
         to_point = @axes[from].rotate(@axes[rotating], Math::PI * 2.0/@order)
         dist_vector = @axes.map {|x| x.dist_sq(to_point)}
         if (dist_vector.min > 0.0001) # double precision should not exceed this threshold
-          raise "Cannot construct multiplication table."
+          raise "Cannot construct reorientation table."
         end
-        dist_vector.rindex(dist_vector.min) # put the index of the closest index to the multiplication table
+        dist_vector.rindex(dist_vector.min) # put the index of the closest index to the reorientation table
       end
     end
   end
@@ -100,7 +100,7 @@ class Platonic
   end
 
   def import_order(shape, turning_axes)
-    # the order of turning. For example, order = 4 for face-turning cube. It will be used in construction of multiplication table.
+    # the order of turning. For example, order = 4 for face-turning cube. It will be used in construction of reorientation table.
 
     if shape == 'cube'
       @f_order = 4

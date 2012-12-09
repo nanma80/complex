@@ -92,9 +92,9 @@ class Piece
     # white list
     white_list = []
 
-    white_list |= cube_f_types[0]
-    white_list |= cube_f_types[2]
-    white_list |= cube_f_types[3]
+    # white_list |= cube_f_types[0]
+    # white_list |= cube_f_types[2]
+    # white_list |= cube_f_types[3]
 
     # black list
     black_list = []
@@ -132,7 +132,7 @@ class Piece
     new_id_string = @id_string[0..-1]
 
     @axes_length.times do |from_index|
-      # change the new_id_string based on the multiplication table of the platonic solid
+      # change the new_id_string based on the reorientation table of the platonic solid
       to_index = @platonic_solid.table[from_index][axis]
       new_id_string[to_index] = @id_string[from_index]
     end
