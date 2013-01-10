@@ -168,22 +168,25 @@ class Platonic
   def icosahedron_vertex
     icosahedron_vertex = []
 
-    icosahedron_vertex << Point3d.new([ 0, 1.0, @phi])
-    icosahedron_vertex << Point3d.new([ 0, 1.0, -@phi])
-    icosahedron_vertex << Point3d.new([ 0, -1.0, @phi])
-    icosahedron_vertex << Point3d.new([ 0, -1.0, -@phi])
+    icosahedron_vertex << Point3d.new([ 0, 1.0, @phi])   # 2048
+    icosahedron_vertex << Point3d.new([ 0, 1.0, -@phi])  # 1024
+    icosahedron_vertex << Point3d.new([ 0, -1.0, @phi])  # 512
+    icosahedron_vertex << Point3d.new([ 0, -1.0, -@phi]) # 256
 
-    icosahedron_vertex << Point3d.new([ 1.0, @phi, 0])
-    icosahedron_vertex << Point3d.new([ 1.0, -@phi, 0])
-    icosahedron_vertex << Point3d.new([ -1.0, @phi, 0])
-    icosahedron_vertex << Point3d.new([ -1.0, -@phi, 0])
+    icosahedron_vertex << Point3d.new([ 1.0, @phi, 0])   # 128
+    icosahedron_vertex << Point3d.new([ 1.0, -@phi, 0])  # 64
+    icosahedron_vertex << Point3d.new([ -1.0, @phi, 0])  # 32
+    icosahedron_vertex << Point3d.new([ -1.0, -@phi, 0]) # 16
 
-    icosahedron_vertex << Point3d.new([ @phi, 0, 1.0])
-    icosahedron_vertex << Point3d.new([ @phi, 0, -1.0])
-    icosahedron_vertex << Point3d.new([ -@phi, 0, 1.0])
-    icosahedron_vertex << Point3d.new([ -@phi, 0, -1.0])
+    icosahedron_vertex << Point3d.new([ @phi, 0, 1.0])   # 8
+    icosahedron_vertex << Point3d.new([ @phi, 0, -1.0])  # 4
+    icosahedron_vertex << Point3d.new([ -@phi, 0, 1.0])  # 2
+    icosahedron_vertex << Point3d.new([ -@phi, 0, -1.0]) # 1
     
     icosahedron_vertex
+    # 128 + 64 + 8 + 4 + 1024 + 2048 + 1 = 3277
+    # 128 + 64 + 8 + 4 + 256 + 512 + 1 = 973
+    # 2048 + 1024 + 128 + 32 + 8 + 4 + 1 = 3245
   end
 
   def dodecahedron_vertex

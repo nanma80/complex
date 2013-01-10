@@ -4,6 +4,7 @@ require_relative 'lib/sticker'
 require_relative 'lib/puzzle'
 require_relative 'lib/piece'
 require_relative 'lib/input_parser'
+require_relative 'lib/piece_types'
 
 
 
@@ -43,7 +44,6 @@ command << "\n"
 command << "reorient := Group([" + reorient_permlists * "," +"]);\ntypes:=Orbits(reorient,[1.."+ puzzle.number_visible_pieces.to_s + "]);\n"
 command << 'Print("There are ",Length(types), " types of pieces: \n",types,"\n");'
 command << "\n"
-
 
 command << "pieces := Group([" + pieces_permlists * "," +"]);\n"
 command << 'Print("Group of permutation of pieces constructed.\nCalculating the size of this group.\n");'
