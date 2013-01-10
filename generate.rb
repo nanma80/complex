@@ -52,8 +52,8 @@ command << "size_pieces:=Size(pieces);\n"
 command << 'Print("Number of permutations of pieces (ignoring orientation): \n",size_pieces,"\n");'
 command << "\n"
 # print orbits of pieces
-command << 'Print("Orbits of pieces: \n",Orbits(pieces,[1..'+ puzzle.number_visible_pieces.to_s + ']),"\n");'
-command << "\n"
+# command << 'Print("Orbits of pieces: \n",Orbits(pieces,[1..'+ puzzle.number_visible_pieces.to_s + ']),"\n");'
+# command << "\n"
 
 if !piece_only
   command << "stickers := Group([" + stickers_permlists * "," +"]);\n"
@@ -63,8 +63,8 @@ if !piece_only
   command << 'Print("Number of permutations of stickers (considering orientation): \n",size_stickers,"\n");'
   command << "\n"
   # print orbits of stickers
-  command << 'Print("Orbits of stickers: \n",Orbits(stickers,[1..'+ puzzle.number_visible_stickers.to_s + ']),"\n");'
-  command << "\n"
+  # command << 'Print("Orbits of stickers: \n",Orbits(stickers,[1..'+ puzzle.number_visible_stickers.to_s + ']),"\n");'
+  # command << "\n"
 end
 
 # write to file

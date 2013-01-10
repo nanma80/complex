@@ -44,15 +44,21 @@ class Piece
     # white_list |= PieceTypes.cube_f_types[2]
     # white_list |= PieceTypes.cube_f_types[3]
 
-    white_list |= PieceTypes.dodeca_f_types[0] # core
+    # white_list |= PieceTypes.dodeca_f_types[0] # core
     # white_list |= PieceTypes.dodeca_f_types[1] # megaminx centers
     # white_list |= PieceTypes.dodeca_f_types[2] # megaminx edges
     # white_list |= PieceTypes.dodeca_f_types[7] # megaminx corners
     # white_list |= PieceTypes.dodeca_f_types[74] # pentultimate corners
-    white_list |= PieceTypes.dodeca_f_types[80] # pentultimate centers
-    
-    white_list |= PieceTypes.dodeca_f_types[94] # anti megaminx centers
+    # white_list |= PieceTypes.dodeca_f_types[80] # pentultimate centers
+    # white_list |= PieceTypes.dodeca_f_types[94] # anti megaminx centers
     # white_list |= PieceTypes.dodeca_f_types[95] # anti-core
+
+    # PieceTypes.dodeca_f_types.each do |type|
+    #   if type.length == 30
+    #     white_list |= type
+    #   end
+    # end
+
 
     # black list
     black_list = []
