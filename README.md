@@ -48,7 +48,9 @@ turning_axes may be face, vertex, or edge. If shape is a number, this parameter 
 Examples:
 
 ruby generate.rb cube face
+
 ruby generate.rb tetrahedron edge piece-only
+
 ruby generate.rb 4
 
 If the puzzle is too large, the runtime may be very long or the memory is not enough depending on the spec of the machine.

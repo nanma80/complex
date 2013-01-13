@@ -22,10 +22,10 @@ moves: U, D, L, R,
 1. 4 centers: [U], never move, only flip
 2. 2 center bars: [UD]. Never moves, only flip. orientation = XOR of orientations of [U] and [D]. redundant.
 3. 4 corners: [UR], moves. no orientation change. 
-4. 4 anti centers: [ULR]. move and flip. In GAP: anti centers double the number of states. All four pieces can flip in place at the same time
+4. 4 anti centers: [ULR]. move and flip. Anti centers double the number of states. All four pieces can flip in place at the same time
   [U2,R2]x6,
   [U2,U2&2, R2,R2&2]x6,
-5. 1 anti core: [UDLR]. only flip, orientation = parity of sum of flips = parity of sum of centers. redundant.
+5. 1 anti core: [UDLR]. only flip. Since flipping horizontally and flipping vertically commute, when the centers are solved, anti-core is always solved. Redundant.
 
 2^4 * (4!/2) * 2= 16 * 12 *2 = 384
 ------------------------
