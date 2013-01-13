@@ -3,6 +3,17 @@ class PieceTypes
   # used to determine visibility of pieces
 
   class << self
+
+    def poly4_types
+      [\
+        [ 1 ], # 0, core
+        [ 2, 5, 3, 9 ], # 1, centers
+        [ 4, 7, 10, 13 ], # 2, corners
+        [ 6, 11 ], # 3, center bars
+        [ 8, 14, 12, 15 ], # 4, anti centers
+        [ 16 ]] # 5, anti core
+    end
+
     def cube_f_types
       [ \
         [ 1 ], # 0, core

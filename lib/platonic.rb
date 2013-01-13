@@ -94,9 +94,10 @@ class Platonic
 
     elsif shape=='tetrahedron' and (turning_axes =='edge')
       @axes = cube_face
-    end
 
-    
+    elsif shape.to_i >= 3
+      @axes = polygon shape.to_i
+    end
   end
 
   def import_order(shape, turning_axes)
@@ -118,7 +119,7 @@ class Platonic
       @f_order = 5
       @v_order = 3
       
-    else # shape=='tetrahedron'
+    else # shape=='tetrahedron' or polygon
       @f_order = 3
       @v_order = 3
     end
@@ -135,6 +136,17 @@ class Platonic
 
 
   # Below: all different axes of platonic solids
+
+  def polygon(n_gon)
+    polygon_vertex = []
+    
+    n_gon.times do |index|
+      theta = 2 * Math::PI / n_gon * index
+      polygon_vertex << Point3d.new([Math.cos(theta), Math.sin(theta), 0])
+    end
+
+    polygon_vertex
+  end
 
   def cube_face
     cube_face = []

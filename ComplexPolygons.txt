@@ -1,0 +1,37 @@
+--------------------
+Complex {3}:
+
+moves: U, L, R
+
+2^3 = 8 pieces
+
+0. 1 core: []
+1. 3 centers: [U]: never move, only flip. 2^3 = 8
+2. 3 corners/anticenters: [LR]: move, double flip. (3!/2) * 4
+3. 1 anti core: [ULR]: determined by anticenters
+
+2^3 * (3!/2) * 4 = 8 * 3 * 4 = 96
+---------------------
+Complex {4}:
+
+moves: U, D, L, R,
+
+2^4 = 16 pieces.
+
+0. 1 core: [] never change
+1. 4 centers: [U], never move, only flip
+2. 2 center bars: [UD]. Never moves, only flip. orientation = XOR of orientations of [U] and [D]. redundant.
+3. 4 corners: [UR], moves. no orientation change. 
+4. 4 anti centers: [ULR]. move and flip. In GAP: anti centers double the number of states. All four pieces can flip in place at the same time
+  [U2,R2]x6,
+  [U2,U2&2, R2,R2&2]x6,
+5. 1 anti core: [UDLR]. only flip, orientation = parity of sum of flips = parity of sum of centers. redundant.
+
+2^4 * (4!/2) * 2= 16 * 12 *2 = 384
+------------------------
+
+Complex {5}: 603979776000
+
+------------------------
+
+Complex {6}: 118881339310080000

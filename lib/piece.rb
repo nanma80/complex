@@ -59,7 +59,6 @@ class Piece
     #   end
     # end
 
-
     # black list
     black_list = []
 

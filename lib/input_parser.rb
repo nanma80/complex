@@ -14,7 +14,9 @@ class InputParser
     # Since "turning" is ignored, "vertex turning" is equivalent to "vertex", which is also accepted.
     until argv.empty? do
       arg = argv.shift
-        if ['tetrahedron', 'tetrahedra', 'tetra'].include? arg
+        if arg.to_i >= 3
+          @shape = arg
+        elsif ['tetrahedron', 'tetrahedra', 'tetra'].include? arg
           @shape = 'tetrahedron'
         elsif ['cube','cubes','hexahedron','hexahedra'].include? arg
           @shape = 'cube'
@@ -49,6 +51,8 @@ class InputParser
 
   def check_input
     # check if the necessary parameters are filled
+    @turning_axes = 'edge' if @shape.to_i >= 3
+
     if @shape == "" or @turning_axes == ""
       puts "Invalid input."
       puts "Usage: ruby generate.rb shape turning-axes [piece-only]"
