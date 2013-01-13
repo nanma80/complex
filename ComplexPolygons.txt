@@ -1,5 +1,5 @@
 --------------------
-Complex {3}:
+Complex {3}: 96
 
 moves: U, L, R
 
@@ -7,12 +7,12 @@ moves: U, L, R
 
 0. 1 core: []
 1. 3 centers: [U]: never move, only flip. 2^3 = 8
-2. 3 corners/anticenters: [LR]: move, double flip. (3!/2) * 4
+2. 3 corners/anticenters: [LR]: move, double flip. (3!/2) * (2^3/2)
 3. 1 anti core: [ULR]: determined by anticenters
 
 2^3 * (3!/2) * 4 = 8 * 3 * 4 = 96
 ---------------------
-Complex {4}:
+Complex {4}: 384
 
 moves: U, D, L, R,
 
@@ -29,9 +29,50 @@ moves: U, D, L, R,
 
 2^4 * (4!/2) * 2= 16 * 12 *2 = 384
 ------------------------
-
 Complex {5}: 603979776000
 
-------------------------
+moves: U, UL, UR, DL, DR, 
 
+2^5 = 32 pieces
+
+0. 1 core: [] never change
+1. 5 centers: [U], never move, only flip. 2^5
+2. 5 corners, moved by adjacent edges: [U,UL], when centers are solved, even perm, double flip. (5!/2) * (2^5/2) 
+3. 5 [UL,UR] (jump one): even perm, double flip (5!/2) * (2^5)/2
+4. 5 [UL, U, UR]: tied with type 3, no perm. double flip (2^5)/2
+5. 5 [U,DL, DR]: tied with type 2, no perm, double flip (2^5)/2
+6. 5 anti centers: anchored to anti core, no perm given anti core. double flip (2^5)/2
+7. 1 anti core: 5 rotation states, when centers are solved.
+
+2^5 * (5!/2)^2 * (2^5/2)^5 * 5 = 603979776000
+
+perm only: 2 * (5!/2)^2 * 5 =  36000
+  (2 is from parity of centers)
+
+------------------------
 Complex {6}: 118881339310080000
+
+moves: U, UL, UR, DL, DR, D
+2^6 = 64 pieces
+
+0. core []
+1. 6 centers: [U], 2^6
+2. 6 corners: [U,UR], even perm. no flip in place. (6!/2)
+3. 6 pieces in two orbits, 3 pieces/orbit: [UL, UR], ((3!/2) * (2^3/2))^2
+4. 6 pieces in two orbits, 3 pieces/orbit: [U, UL, UR], tied to type 3. No perm. ((2^3/2))^2
+5. 3 center bars, redundant
+6. 12 pieces in two orbits, 6 pieces/orbit: [U,UL,D] (6!/2)^2
+7. 2 pieces like [U,DL,DR], every other edge: never move. orientations tied with type 3 and 4. redundant
+8. 6 anti corners: even perm, (6!/2). Never flip in place. 
+9. 6 pieces: anti type 3, two orbits. tied to types 3 and 4 and 7. orientation = sum(corresponding pieces in type 4 and type 7). redundant
+10. 3 anti center bars REDUNDANT
+11. 6 anti centers divided into two orbits: given anti core, no perm, (2^6)/4. Divided by 4: in each orbit, parity(sum(flips of type 11)) = parity(sum(flips of type 2))
+12. 1 anti core: only 3 rotational states are possible
+
+total permutation:
+(2^6)^2 * (Factorial(6)/2)^4 * (Factorial(3)/2)^2 * (2^3/2)^4 * 3 /4;
+
+------------------------
+Complex {7}: 131767294509897456998422461440289444903770642689599429672960000000000
+
+Not manually analyzed yet...

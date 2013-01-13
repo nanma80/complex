@@ -59,6 +59,19 @@ class Piece
     #   end
     # end
 
+    # 1.times do |index|
+    #   white_list |= PieceTypes.poly6_types[index]
+    # end
+
+    # white_list |= PieceTypes.poly6_types[1]
+    # white_list |= PieceTypes.poly6_types[8]
+
+    # white_list |= PieceTypes.poly6_types[12] # anti core
+    # white_list |= PieceTypes.poly6_types[11] # anti centers
+    # white_list |= PieceTypes.poly6_types[10] # anti center bars
+    # white_list |= PieceTypes.poly6_types[9] # 
+
+
     # black list
     black_list = []
 

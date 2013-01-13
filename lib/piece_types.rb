@@ -14,6 +14,36 @@ class PieceTypes
         [ 16 ]] # 5, anti core
     end
 
+    def poly5_types
+      [\
+        [ 1 ], # 0, core
+        [ 2, 9, 3, 17, 5 ], # 1, centers
+        [ 4, 13, 25, 7, 18 ], # 2, corners
+        [ 6, 11, 19, 21, 10 ], # 3, [UL, UR], jump one pieces
+        [ 8, 15, 20, 29, 26 ], # 4, [UL, U, UR], tied with 3
+        [ 12, 14, 27, 23, 22 ], # 5, [U,DL, DR], tied with 2
+        [ 16, 28, 31, 24, 30 ], # 6, anti centers
+        [ 32 ] ] # 7, anti core
+    end
+
+    def poly6_types
+      [\
+       [ 1 ], # 0 core
+       [ 2, 17, 5, 3, 9, 33 ], # 1, centers
+       [ 4, 25, 7, 34, 49, 13 ], # 2, corners
+       [ 6, 21, 18, 11, 35, 41 ], # 3. [UL, UR], two orbits
+       [ 8, 29, 50, 15, 36, 57 ], # 4. [U, UL, UR], two orbits
+       [ 10, 19, 37 ], # 5. center bars REDUNDANT
+       [ 12, 27, 39, 42, 51, 45, 14, 23, 38, 26, 20, 53 ], # 6. [U,UL,D] two orbits
+       [ 22, 43 ], # 7. [U,DL,DR] every other edge
+       [ 16, 31, 40, 58, 52, 61 ], # 8. anti corners
+       [ 24, 30, 54, 44, 59, 47 ], # 9. anti type 3, two orbits
+       [ 28, 55, 46 ], # 10. anti center bars REDUNDANT
+       [ 32, 56, 62, 48, 63, 60 ], # 11. anti centers
+       [ 64 ] ] # 12. anti-core
+    end
+
+
     def cube_f_types
       [ \
         [ 1 ], # 0, core

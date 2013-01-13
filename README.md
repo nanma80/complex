@@ -39,9 +39,9 @@ http://www.gap-system.org/
 
 ruby generate.rb shape turning_axes [piece-only]
 
-where shape may be tetrahedron, cube, octahedron, dodecahedron or icosahedron
+where shape may be tetrahedron, cube, octahedron, dodecahedron or icosahedron, or any number no less than 3. If shape is a number, the shape is a 2D polygon with that number of sides.
 
-turning_axes may be face, vertex, or edge
+turning_axes may be face, vertex, or edge. If shape is a number, this parameter may be dropped.
 
 [piece-only] is an optional switch. If not given, the code will generate the permutation for both pieces and stickers. If given, it will only generate that for pieces.
 
@@ -49,6 +49,7 @@ Examples:
 
 ruby generate.rb cube face
 ruby generate.rb tetrahedron edge piece-only
+ruby generate.rb 4
 
 If the puzzle is too large, the runtime may be very long or the memory is not enough depending on the spec of the machine.
 
