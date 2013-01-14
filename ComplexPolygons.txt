@@ -75,4 +75,26 @@ total permutation:
 ------------------------
 Complex {7}: 131767294509897456998422461440289444903770642689599429672960000000000
 
-Not manually analyzed yet...
+moves: U, UL, UR, ML, MR, DL, DR
+
+0. core
+1. center. each can flip 2^7
+2. corner, even perm, double flip, (Factorial(7)/2) * (2^7/2)
+3. [UL, UR] jump-one: even perm, double flip, (Factorial(7)/2) * (2^7/2)
+4. [U,UL,UR]. tied to type 3. No perm, double flip (2^7/2)
+5. [U,DR], jump-two, even perm, double flip, (Factorial(7)/2) * (2^7/2)
+6. [U,UL,DL], 14 pieces, all in one orbit. even perm, no flip: (Factorial(14)/2)
+7. [U,UL,ML,DL], 7 pieces, even perm, double flip, (Factorial(7)/2) * (2^7/2)
+8. [U,DL,DR] tied with corners, no perm, double flip (2^7/2)
+9. [U, ML, MR] tied with type 5. no perm given type 5, double flip (2^7/2)
+10. [U,UL,ML,DR], 14 pieces all in one orbit. even perm, no flip (Factorial(14)/2)
+11. [UL,UR,ML,MR], even perm, double flip (Factorial(7)/2) * (2^7/2)
+12. [U,UL,UR,ML,MR], tied to type 11. no perm given 11, double flip. (2^7/2)
+13. [UL,UR,DL,DR] anti type 9. even perm, double flip (Factorial(7)/2) * (2^7/2)
+14. anti type 3. tied to type 7. no perm given type 7. double flip (2^7/2)
+15. anti type 5. tied to type 13. no perm given type 13. double flip (2^7/2)
+16. anti center, permutation tied to anti-core. double flip (2^7/2)
+17. anti-core, 7 rotational states
+
+all:
+(2^7) * (Factorial(7)/2)^6 * (2^7/2)^13 * (Factorial(14)/2)^2 * 7;
