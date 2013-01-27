@@ -1,0 +1,77 @@
+------------
+Complex edge-turning tetrahedron = Complex half turn only Rubik's Cube. Axes are identical to cube_face
+
+There are 28 types of pieces:
+[ [ 1 ], [ 2, 9 ], [ 3, 17 ], [ 4, 25, 11, 18 ], [ 5, 33 ], [ 6, 13, 41, 34 ], [ 7, 21, 35, 49 ], [ 8, 29, 43, 50 ],
+  [ 10 ], [ 12, 26 ], [ 14, 42 ], [ 15, 22, 36, 57 ], [ 16, 30, 44, 58 ], [ 19 ], [ 20, 27 ], [ 23, 51 ],
+  [ 24, 31, 59, 52 ], [ 28 ], [ 32, 60 ], [ 37 ], [ 38, 45 ], [ 39, 53 ], [ 40, 61, 47, 54 ], [ 46 ], [ 48, 62 ],
+  [ 55 ], [ 56, 63 ], [ 64 ] ]
+Number of permutations of pieces (ignoring orientation):
+42467328
+Number of permutations of stickers (considering orientation):
+2717908992
+
+Types of Rubik's cube:
+[[ 1 ], # 0, core
+  [ 2, 17, 5, 3, 33, 9 ], # 1, face
+  [ 4, 18, 7, 34, 11, 35, 6, 25, 21, 49, 13, 41 ], # 2, edge
+  [ 8, 22, 15, 36, 29, 50, 43, 57 ], # 3, corner
+  [ 10, 19, 37 ], # 4, UD
+  [ 12, 20, 39, 42, 27, 14, 26, 23, 38, 51, 45, 53 ], # 5 UDF
+  [ 16, 24, 47, 44, 31, 40, 30, 52, 54, 59, 61, 58 ], # 6 inverted edge
+  [ 28, 55, 46 ], # 7 FBLR
+  [ 32, 63, 48, 56, 62, 60 ], # 8 inverted face
+  [ 64 ] ] # 9, inverted core
+
+Analysis: (using cube notation)
+
+1. Core: Never turns. Redundant.
+2. Faces: two orientations for each piece: 2^6
+3. Edges: In three orbits. If faces are solved, even perm in each orbit. Cannot flip in place. (Factorial(4)/2)^3
+4. Corners: In two orbits. The pieces in different orbits are correlated. If faces are solved, even perm in each orbit. Cannot flip or rotate in place. In the first orbit, there are (Factorial(4)/2) states. If this orbit is solved, the second orbit has FOUR states: solved, U2, F2, R2.
+5. [UD], REDUNDANT if faces are solved.
+
+
+8. inverted faces: 4??? don't understand
+9. inverted core: REDUNDANT if faces are solved: U2 and F2 commute.
+
+1~5+9:
+2^6 * (Factorial(4)/2)^4 * 4
+
+
+
+---------------------
+solving notes:
+180 degree Complex 3x3x3:
+
+Ten types:
+
+1. Core: reference
+2. Face: U
+3. Edge: UF
+4. [UD]
+5. [UDF]: 3.1.32 inner edge
+6. Corner [UFR]
+7. Inverted Edge [UDFR]: 3.1.31 inner edge
+8. [UDLR] = [UD]^-1: 3.1.32 centers
+9. Inverted Face [UDLRF]: 3.1.31 centers
+10. Inverted Core [UDLRFB]
+
+Generating scramble:
+
+python scr180.py >> scramble.txt
+
+Solution:
+1. Use 1 layer circle view, solve faces. Trivial. Inverted Core, [UD], [UDLR] solved automatically. (5 types solved)
+2. Use 1 layer view, solve corners. intuitive and simple. use algorithms like [U2,R2]x2. Cannot only do U2, because that way the faces would be wrong. (6 types solved)
+3. Use 1 layer view, solve edges. Use algos like [F2, U2, R2, U2]x2. (7 types solved)
+--->
+F2,U2,R2,U2,F2,U2,R2,U2,
+mirror: <---
+R2,U2,F2,U2,R2,U2,F2,U2,
+
+4. Use 2 layer circle view, solve [UDF]. Algo: [U2, R2]x6. flip the four stickers in F and B. Inverted faces solved automatically.
+U2,R2,U2,R2,U2,R2,U2,R2,U2,R2,U2,R2,
+
+5. Use 2 layer view, solve inverted edges: flip the two horizontal stickers in F and B: [R2,U2,F2,U2]x2,[F2,D2,R2,D2]x2,
+[R2, U2, F2, U2, R2, U2, F2, U2, F2, D2, R2, D2, F2, D2, R2, D2],

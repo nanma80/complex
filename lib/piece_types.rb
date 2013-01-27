@@ -76,8 +76,11 @@ class PieceTypes
         [ 16, 24, 47, 44, 31, 40, 30, 52, 54, 59, 61, 58 ], # 6 inverted edge
         [ 28, 55, 46 ], # 7 FBLR
         [ 32, 63, 48, 56, 62, 60 ], # 8 inverted face
-        [ 64 ] \
-      ] # 9, inverted core
+        [ 64 ] ] # 9, inverted core
+    end
+
+    def tetra_e_types
+      cube_f_types
     end
 
     def cube_v_types

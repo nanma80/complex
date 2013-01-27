@@ -40,6 +40,13 @@ class Piece
     # white list
     white_list = []
 
+    # 5.times do |index|
+    #   white_list |= PieceTypes.tetra_e_types[index]
+    # end
+
+    # white_list |= PieceTypes.tetra_e_types[8]
+    # white_list |= PieceTypes.tetra_e_types[9]
+
     # white_list |= PieceTypes.cube_f_types[0]
     # white_list |= PieceTypes.cube_f_types[2]
     # white_list |= PieceTypes.cube_f_types[3]
