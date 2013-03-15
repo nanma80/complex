@@ -82,6 +82,19 @@ class Piece
     # white_list |= PieceTypes.poly6_types[10] # anti center bars
     # white_list |= PieceTypes.poly6_types[9] # 
 
+    # Complex Polygon 8
+    # 22.times do |index|
+    #   white_list |= PieceTypes.poly8_types[index]
+    # end
+
+    # white_list |= PieceTypes.poly8_types[23]
+    # white_list |= PieceTypes.poly8_types[24]
+    # white_list |= PieceTypes.poly8_types[25]
+    # white_list |= PieceTypes.poly8_types[26]
+    # white_list |= PieceTypes.poly8_types[27]
+    # white_list |= PieceTypes.poly8_types[28]
+    # white_list |= PieceTypes.poly8_types[29]
+
 
     # black list
     black_list = []
